@@ -9,15 +9,27 @@
 </head>
 <body>
     <main>
-        <div>
-            <label for="number">Número</label>
-            <input id="number" type="number">
-        </div>
-        <div>
+        <div class="content">
+            <div>
+                <label for="number">Número</label>
+                <input id="number" type="number">
+            </div>
             <button id="add">Adicionar</button>
         </div>
-        <div>
-            <input id="sum" type="number" value="0" onclick="sum()" readonly="true">
+        <div class="content">
+            <label for="sum">Soma: </label>
+            <input id="sum" type="number" value="0" readonly="true">
+        </div>
+        <div class="content">
+            <label for="media">Média: </label>
+            <input id="media" type="number" value="0" readonly="true">
+        </div>
+        <div class="content">
+            <label for="numdig">Números digitados: </label>
+            <input id="numdig" type="number" value="0" readonly="true">
+        </div>
+        <div class="content">
+            <button id="clear">Limpar</button>
         </div>
     </main>
 </body>

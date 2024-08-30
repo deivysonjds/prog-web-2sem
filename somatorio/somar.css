@@ -1,3 +1,9 @@
 #add {
     margin: 10px;
 }
+
+.content {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
