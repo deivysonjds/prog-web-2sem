@@ -10,7 +10,6 @@ btnsorteio.onclick = ()=>{
         return;
     }   
     let sorteadoNum = Math.trunc((Math.random() * (parseInt(maiorvalor.value) - parseInt(menorvalor.value) +1) + parseInt(menorvalor.value)))
-    console.log(sorteadoNum);
     
     numSorteado.value = sorteadoNum
 }

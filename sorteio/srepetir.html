@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./sorteioComRepeticao.js" defer></script>
+    <script src="./sorteioSemRepeticao.js" defer></script>
     <title>Sorteio</title>
 </head>
 <body>
     <header>
         <h1>
-            Sorteador com repetição
+            Sorteador sem repetçião
         </h1>
     </header>
     <main>
@@ -21,15 +21,19 @@
             <label for="maiorvalor">maior valor</label>
             <input id="maiorvalor" type="number">
         </div>
-        <button id="sorteio">Sortear</button>
+        <button id="sorteioSR">Sortear</button>
         <div>
             <label for="numSorteado">Número sorteado</label>
             <input id="numSorteado" type="number" readonly>
         </div>
         <div>
+            <label for="numSorteadoList">Lista de números sorteado</label>
+            <input id="numSorteadoList" type="text" readonly>
+        </div>
+        <div>
             <p>
-                Para sortear sem repetir
-                <a href="./srepetir.html">clique aqui</a>
+                Para sortear com repetição
+                <a href="./index.html">clique aqui</a>
             </p>
         </div>
     </main>
