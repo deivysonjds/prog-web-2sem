@@ -12,5 +12,10 @@
     "titulo": "Sorteio",
     "descricao": "Criar um site de sorteio de números entre valores previamente especificados",
     "url": "./soteio/"
+},
+{
+    "titulo": "Objeto",
+    "descricao": "Criar um site que recebe valores e mostra na tela",
+    "url": "./objeto/"
 }
 ]
