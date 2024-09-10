@@ -24,7 +24,11 @@ const atividades = [{
 ]
 
 OlElement.onload = ()=>{
+    console.log(`teste 1`);
+    
     for (const atividade of atividades) {
+        console.log(`teste 2`);
+        
         let liElement = document.createElement('li')
         let h2Element = document.createElement('h2')
         let pElement = document.createElement('p')
