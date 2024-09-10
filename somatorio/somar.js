@@ -1,10 +1,11 @@
 const btnadd = document.getElementById('add')
 const sum = document.getElementById('sum')
 const number = document.getElementById('number')
-const inputMedia = document.getElementById('media')
-const inputNumdig = document.getElementById('numdig')
+const preMedia = document.getElementById('media')
+const preNumDig = document.getElementById('numdig')
 const btnClear = document.getElementById('clear')
 
+const listNumDigitados = []
 btnadd.onclick = ()=>{
     if (isNaN(parseInt(number.value))){
         alert("Valor inválido!")
@@ -16,12 +17,12 @@ btnadd.onclick = ()=>{
         return;
     }
 
-    let numdigitados = parseInt(inputNumdig.value) + 1
+    listNumDigitados.push(number.value)
     let soma = parseInt(sum.value) + parseInt(number.value)
-    let media = soma/numdigitados
+    let media = soma/numdigitado
 
-    inputNumdig.value = numdigitados
-    inputMedia.value = media
+    preNumDig.value = `Números digitados: ${listNumDigitados}`
+    preMedia.value = `Média: ${media}`
     sum.value = soma
     number.value = null
     number.focus();
@@ -29,6 +30,6 @@ btnadd.onclick = ()=>{
 
 btnClear.onclick = ()=>{
     sum.value = 0
-    inputMedia.value = 0
-    inputNumdig.value = 0
+    preMedia.value = 'Média: '
+    preNumDig.value = 'Números digitados: '
 }
