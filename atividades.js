@@ -20,4 +20,4 @@ const atividades = [{
 }
 ]
 
-export default atividades
+module.exports = atividades
