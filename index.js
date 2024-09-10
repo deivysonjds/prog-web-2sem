@@ -1,5 +1,5 @@
 const OlElement = document.getElementById('atvs')
-import { atividades } from "./atividades"
+import atividades from "./atividades"
 
 OlElement.onload = ()=>{
     for (const atividade of atividades) {
@@ -18,7 +18,7 @@ OlElement.onload = ()=>{
         pLinkElement.textContent  = `${aElement} para visualizar`
 
         liElement.classList.add(`listas-atividades`)
-        
+
         liElement.appendChild(h2Element)
         liElement.appendChild(pElement)
         liElement.appendChild(pLinkElement)
