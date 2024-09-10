@@ -17,9 +17,9 @@ btnadd.onclick = ()=>{
         return;
     }
 
-    listNumDigitados.push(number.value)
+    listNumDigitados.push(number.value) 
     let soma = parseInt(sum.value) + parseInt(number.value)
-    let media = soma/numdigitado
+    let media = soma/listNumDigitados.length
 
     preNumDig.value = `Números digitados: ${listNumDigitados}`
     preMedia.value = `Média: ${media}`
