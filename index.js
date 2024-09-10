@@ -23,7 +23,7 @@ const atividades = [{
 }
 ]
 
-OlElement.onload = ()=>{
+document.onload(()=>{
     console.log(`teste 1`);
     
     for (const atividade of atividades) {
@@ -51,6 +51,4 @@ OlElement.onload = ()=>{
 
         OlElement.appendChild(liElement)
     }
-
-
-}
+})
