@@ -1,10 +1,29 @@
 // import { atividades } from "./atividades.js"
-const atividades = require('./atividades')
 const OlElement = document.getElementById('atvs')
-console.log(`teste 1`);
+
+const atividades = [{
+    "titulo": "media querie",
+    "descricao": "desenvolver site utilizando media querie",
+    "url": "./media-queries/"
+},
+{
+    "titulo": "Somatório",
+    "descricao": "Fazer um site que soma valores ao clicar no botão",
+    "url": "./somatorio/"
+},
+{
+    "titulo": "Sorteio",
+    "descricao": "Criar um site de sorteio de números entre valores previamente especificados",
+    "url": "./soteio/"
+},
+{
+    "titulo": "Objeto",
+    "descricao": "Criar um site que recebe valores e mostra na tela",
+    "url": "./objeto/"
+}
+]
 
 OlElement.onload = ()=>{
-    console.log(`teste 2`);
     for (const atividade of atividades) {
         let liElement = document.createElement('li')
         let h2Element = document.createElement('h2')

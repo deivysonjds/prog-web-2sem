@@ -20,4 +20,3 @@ const atividades = [{
 }
 ]
 
-module.exports = atividades
