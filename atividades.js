@@ -1,4 +1,4 @@
-export const atividades = [{
+const atividades = [{
     "titulo": "media querie",
     "descricao": "desenvolver site utilizando media querie",
     "url": "./media-queries/"
@@ -19,3 +19,5 @@ export const atividades = [{
     "url": "./objeto/"
 }
 ]
+
+export default atividades
