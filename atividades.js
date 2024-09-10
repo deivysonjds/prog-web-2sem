@@ -1,4 +1,4 @@
-const atividades = [{
+export const atividades = [{
     "titulo": "media querie",
     "descricao": "desenvolver site utilizando media querie",
     "url": "./media-queries/"
@@ -19,5 +19,3 @@ const atividades = [{
     "url": "./objeto/"
 }
 ]
-
-module.exports = atividades

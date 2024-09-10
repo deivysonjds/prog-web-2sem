@@ -1,5 +1,5 @@
+import { atividades } from "./atividades.js"
 const OlElement = document.getElementById('atvs')
-const atividades = require('./atividades')
 
 OlElement.onload = ()=>{
     for (const atividade of atividades) {
