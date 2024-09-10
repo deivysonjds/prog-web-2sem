@@ -1,8 +1,10 @@
 // import { atividades } from "./atividades.js"
 const atividades = require('./atividades')
 const OlElement = document.getElementById('atvs')
+console.log(`teste 1`);
 
 OlElement.onload = ()=>{
+    console.log(`teste 2`);
     for (const atividade of atividades) {
         let liElement = document.createElement('li')
         let h2Element = document.createElement('h2')
