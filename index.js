@@ -1,5 +1,5 @@
 const OlElement = document.getElementById('atvs')
-import atividades from "./atividades"
+import atividades from "./atividades.js"
 
 OlElement.onload = ()=>{
     for (const atividade of atividades) {
