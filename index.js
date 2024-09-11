@@ -24,10 +24,8 @@ const atividades = [{
 ]
 
 document.addEventListener('DOMContentLoaded',()=>{
-    console.log(`teste 1`);
     
     for (const atividade of atividades) {
-        console.log(`teste 2`);
         
         let liElement = document.createElement('li')
         let h2Element = document.createElement('h2')
@@ -41,7 +39,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         aElement.href = atividade.url
         aElement.textContent = 'Clique aqui'
-        pLinkElement.textContent  = `${aElement} para visualizar`
+        pLinkElement.appendChild(aElement)
+        pLinkElement.textContent  = ` para visualizar`
 
         liElement.classList.add(`listas-atividades`)
 
