@@ -11,7 +11,7 @@ const atividades = [{
 {
     "titulo": "Sorteio",
     "descricao": "Criar um site de sorteio de números entre valores previamente especificados",
-    "url": "./soteio/"
+    "url": "./sorteio/"
 },
 {
     "titulo": "Objeto",
