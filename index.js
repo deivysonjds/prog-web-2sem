@@ -14,7 +14,7 @@ const atividades = [{
 {
     "titulo": "Sorteio",
     "descricao": "Criar um site de sorteio de números entre valores previamente especificados",
-    "url": "./soteio/"
+    "url": "./sorteio/"
 },
 {
     "titulo": "Objeto",
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         aElement.href = atividade.url
         aElement.textContent = 'Clique aqui'
         pLinkElement.textContent  = ` para visualizar`
-        
+
         liElement.classList.add(`listas-atividades`)
 
         liElement.appendChild(h2Element)
