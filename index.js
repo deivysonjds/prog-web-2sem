@@ -23,7 +23,7 @@ const atividades = [{
 }
 ]
 
-document.onload(()=>{
+document.addEventListener('DOMContentLoaded',()=>{
     console.log(`teste 1`);
     
     for (const atividade of atividades) {
