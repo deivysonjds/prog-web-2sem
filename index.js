@@ -38,14 +38,14 @@ document.addEventListener('DOMContentLoaded',()=>{
         pElement.textContent = atividade.descricao
 
         aElement.href = atividade.url
-        aElement.innerHTML = 'Clique aqui'
-        pLinkElement.appendChild(aElement)
+        aElement.textContent = 'Clique aqui'
         pLinkElement.textContent  = ` para visualizar`
 
         liElement.classList.add(`listas-atividades`)
 
         liElement.appendChild(h2Element)
         liElement.appendChild(pElement)
+        liElement.appendChild(aElement)
         liElement.appendChild(pLinkElement)
 
         OlElement.appendChild(liElement)
