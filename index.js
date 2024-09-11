@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         pElement.textContent = atividade.descricao
 
         aElement.href = atividade.url
-        aElement.textContent = 'Clique aqui'
+        aElement.innerHTML = 'Clique aqui'
         pLinkElement.appendChild(aElement)
         pLinkElement.textContent  = ` para visualizar`
 
