@@ -20,6 +20,11 @@ const atividades = [{
     "titulo": "Objeto",
     "descricao": "Criar um site que recebe valores e mostra na tela",
     "url": "./objeto/"
+},
+{
+    "titulo": "Separador",
+    "descricao": "Criar um site que recebe uma palavra e mostra na tela de forma separada cada letra em uma div",
+    "url": "./separador/"
 }
 ]
 
