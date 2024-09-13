@@ -25,6 +25,11 @@ const atividades = [{
     "titulo": "Separador",
     "descricao": "Criar um site que recebe uma palavra e mostra na tela de forma separada cada letra em uma div",
     "url": "./separador/"
+},
+{
+    "titulo": "Jogo da forca",
+    "descricao": "Criar um site que seja um jogo da forca",
+    "url": "./jogoforca/"
 }
 ]
 
