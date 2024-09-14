@@ -55,6 +55,8 @@ function iniciarNovoJogo(){
 
 function chutar(){
     const pTentativasCh = document.getElementById('txt-tnt')
-    
-    console.log(pTentativasCh);
+    if (!pTentativasCh){
+        alert('Inicie o jogo antes de tentar um chute.')
+        return;
+    }
 }
