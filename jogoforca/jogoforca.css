@@ -1,0 +1,59 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+
+#div-inc-jg {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+#inc-jg {
+    width: 6rem;
+    height: 3rem;
+    font-size: 1rem;
+    background: orange;
+    border-radius: 10px;
+}
+
+#inc-jg:hover {
+    background: yellow;
+}
+
+#div-ltr-ch {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+#ltr-tnt {
+    font-size: 50px;
+}
+
+#len-plv {
+    display: flex;
+    justify-content: center;
+}
+
+.div-let-sp {
+    width: 60px;
+    height: 40px;
+    border-bottom: 1px solid black;
+    margin: 10px;
+}
+
+#ltr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#tnt-ch {
+    display: flex;
+    justify-content: center;
+}
+
+#txt-tnt {
+    font-size: 40px;
+}

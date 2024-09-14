@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./jogoforca.css">
+    <script src="./jogoforca.js" defer></script>
+    <title>Jogo da forca</title>
 </head>
 <body>
     <header>
@@ -11,5 +13,18 @@
             Jogo da forca
         </h1>
     </header>
+    <main>
+        <div id="div-inc-jg">
+            <button id="inc-jg" onclick="iniciarNovoJogo()">Iniciar Novo Jogo</button>
+        </div>
+        <div id="div-ltr-ch">
+            <label for="ltr-ch">Letra: </label>
+            <input id="ltr-ch" type="text" maxlength="1">
+            <button id="btn-ch" onclick="chutar()">Chutar</button>
+        </div>
+        <div id="len-plv"></div>
+        <div id="ltr"></div>
+        <div id="tnt-ch"></div>
+    </main>
 </body>
 </html>
