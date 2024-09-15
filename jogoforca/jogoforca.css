@@ -37,6 +37,8 @@ header {
 }
 
 .div-let-sp {
+    display: flex;
+    justify-content: center;
     width: 60px;
     height: 40px;
     border-bottom: 1px solid black;
@@ -52,8 +54,34 @@ header {
 #tnt-ch {
     display: flex;
     justify-content: center;
+
 }
 
 #txt-tnt {
     font-size: 40px;
+}
+
+.ltr-ch-crt {
+    font-size: 1rem;
+}
+
+#ltr-ch-lst {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ltr-ch-div {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+#txt-ltr-ch {
+    font-size: 30px;
 }

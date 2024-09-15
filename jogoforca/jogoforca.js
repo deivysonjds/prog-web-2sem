@@ -22,6 +22,8 @@ const palavras = [
 
 let palavraJogo = ''
 let tentativas = 0
+let letrasCertas = 0
+let listLetrasChutadas = []
 
 function iniciarNovoJogo(){
     let indexPalavra = Math.floor(Math.random() * palavras.length)
@@ -29,34 +31,116 @@ function iniciarNovoJogo(){
     divLetras.innerHTML = ''
     const divLenPalavra = document.getElementById('len-plv')
     divLenPalavra.innerHTML = ''
+    const divLetrasTentList = document.getElementById('ltr-ch-lst')
+    divLetrasTentList.innerHTML = ''
     const divTentativas = document.getElementById('tnt-ch')
     divTentativas.innerHTML = ''
-
     
     let pLenPalavra = document.createElement('p')
     pLenPalavra.id = 'ltr-tnt'
     pLenPalavra.textContent = `Palavra com ${palavras[indexPalavra].length} letras`
     
+    
+    divLenPalavra.appendChild(pLenPalavra)
+    palavraJogo = palavras[indexPalavra]
+    
+    for (let letra in palavraJogo){
+        let divLetra = document.createElement('div')
+        divLetra.classList.add('div-let-sp')
+        
+        divLetras.appendChild(divLetra)
+    }
+    
+    listLetrasChutadas = []
+    tentativas = 0
+    letrasCertas = 0
+    
     let pTentativas = document.createElement('p')
     pTentativas.id = 'txt-tnt'
     pTentativas.textContent = `Tentativas: ${tentativas}`
     divTentativas.appendChild(pTentativas)
-
-    divLenPalavra.appendChild(pLenPalavra)
-    palavraJogo = palavras[indexPalavra]
-
-    for (let letra in palavraJogo){
-        let divLetra = document.createElement('div')
-        divLetra.classList.add('div-let-sp')
-
-        divLetras.appendChild(divLetra)
-    }
 }
 
 function chutar(){
+    
     const pTentativasCh = document.getElementById('txt-tnt')
+    const letraChuteInput = document.getElementById('ltr-ch')
+    const letrasOcultasDiv = document.querySelectorAll('.div-let-sp')
+    
     if (!pTentativasCh){
         alert('Inicie o jogo antes de tentar um chute.')
+        letraChuteInput.value = ''
+        letraChuteInput.focus()
         return;
     }
+    
+    if(palavraJogo.length == letrasCertas){
+        alert('Você já acertou a palavra! Reinicie o Jogo!')
+        letraChuteInput.value = ''
+        letraChuteInput.focus()
+        return;
+    }
+
+    if (!letraChuteInput.value){
+        alert('Informe uma letra!')
+        letraChuteInput.focus()
+        return;
+    }
+
+    let letraInList = listLetrasChutadas.find((letra)=>{
+        return letra == letraChuteInput.value
+    })
+    
+    if (letraInList != undefined){
+        alert('A letra já foi chutada, informe outra.')
+        letraChuteInput.value = ''
+        letraChuteInput.focus()
+        return
+    }
+
+    let countIndex = 0
+    for (let letra of palavraJogo){
+        if (letra == letraChuteInput.value){
+            let pLetraChute = document.createElement('p')
+            pLetraChute.classList.add('ltr-ch-crt')
+            pLetraChute.textContent = letraChuteInput.value
+
+            letrasOcultasDiv[countIndex].appendChild(pLetraChute)
+            letrasCertas++
+        }
+        countIndex++
+    }
+
+    if(palavraJogo.length == letrasCertas){
+        alert('Você acertou a palavra! Bom trabalho')
+    }
+
+    const divLetrasTent = document.getElementById('ltr-ch-lst')
+
+    if (tentativas == 0){
+        let divTextLetraTen = document.createElement('div')
+        let pTextLetraTent = document.createElement('p')
+        pTextLetraTent.id = 'txt-ltr-ch'
+        pTextLetraTent.textContent = 'Letras chutadas: '
+        divTextLetraTen.appendChild(pTextLetraTent)
+        divLetrasTent.appendChild(divTextLetraTen)
+    }
+    
+    let divLetraTent = document.createElement('div')
+    divLetraTent.classList.add('ltr-ch-div')
+    
+    let pLetraTent = document.createElement('p')
+    pLetraTent.classList.add('ltr-ch-p')
+    pLetraTent.textContent = letraChuteInput.value
+
+    divLetraTent.appendChild(pLetraTent)
+    divLetrasTent.appendChild(divLetraTent)
+
+    listLetrasChutadas.push(letraChuteInput.value)
+    tentativas++
+    const pTentativas = document.getElementById('txt-tnt')
+    pTentativas.textContent = `Tentativas: ${tentativas}`
+
+    letraChuteInput.value = ''
+    letraChuteInput.focus()
 }
