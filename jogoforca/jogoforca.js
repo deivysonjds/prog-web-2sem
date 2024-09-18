@@ -101,7 +101,7 @@ function chutar(){
     }
 
     let letraInList = listLetrasChutadas.find((letra)=>{
-        return letra == letraChuteInput.value.toLowerCase()
+        return letra.toLowerCase() == letraChuteInput.value.toLowerCase()
     })
     
     if (letraInList != undefined){
