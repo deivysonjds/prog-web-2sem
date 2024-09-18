@@ -23,6 +23,7 @@ const palavras = [
 let palavraJogo = ''
 let tentativas = 0
 let letrasCertas = 0
+let erros = 0
 let listLetrasChutadas = []
 
 function iniciarNovoJogo(){
@@ -35,6 +36,8 @@ function iniciarNovoJogo(){
     divLetrasTentList.innerHTML = ''
     const divTentativas = document.getElementById('tnt-ch')
     divTentativas.innerHTML = ''
+    const divErros = document.getElementById('erros')
+    divErros.innerHTML = ''
     
     let pLenPalavra = document.createElement('p')
     pLenPalavra.id = 'ltr-tnt'
@@ -54,15 +57,25 @@ function iniciarNovoJogo(){
     listLetrasChutadas = []
     tentativas = 0
     letrasCertas = 0
+    erros = 0
     
     let pTentativas = document.createElement('p')
     pTentativas.id = 'txt-tnt'
     pTentativas.textContent = `Tentativas: ${tentativas}`
     divTentativas.appendChild(pTentativas)
+
+    let pErros = document.createElement('p')
+    pErros.id = 'txt-er'
+    pErros.textContent = `Erros: ${erros}`
+    divErros.appendChild(pErros)
 }
 
 function chutar(){
-    
+    if (erros >= 5){
+        alert(`Você perdeu, reinicie o jogo\nA palavra era ${palavraJogo}`)
+        return;
+    }
+
     const pTentativasCh = document.getElementById('txt-tnt')
     const letraChuteInput = document.getElementById('ltr-ch')
     const letrasOcultasDiv = document.querySelectorAll('.div-let-sp')
@@ -99,6 +112,7 @@ function chutar(){
     }
 
     let countIndex = 0
+    let chuteErrado = true
     for (let letra of palavraJogo){
         if (letra == letraChuteInput.value){
             let pLetraChute = document.createElement('p')
@@ -107,9 +121,19 @@ function chutar(){
 
             letrasOcultasDiv[countIndex].appendChild(pLetraChute)
             letrasCertas++
+            chuteErrado = false
         }
         countIndex++
     }
+
+    if (chuteErrado){
+        erros++
+        if (erros>=5) {
+            alert(`Você perdeu, reinicie o jogo\nA palavra era ${palavraJogo}`)
+            return
+        }
+    }
+    
 
     if(palavraJogo.length == letrasCertas){
         alert('Você acertou a palavra! Bom trabalho')
@@ -140,6 +164,9 @@ function chutar(){
     tentativas++
     const pTentativas = document.getElementById('txt-tnt')
     pTentativas.textContent = `Tentativas: ${tentativas}`
+
+    const pErro = document.getElementById('txt-er')
+    pErro.textContent = `Erros: ${erros}`
 
     letraChuteInput.value = ''
     letraChuteInput.focus()

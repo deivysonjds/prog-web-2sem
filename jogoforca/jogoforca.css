@@ -51,13 +51,12 @@ header {
     justify-content: center;
 }
 
-#tnt-ch {
+#tnt-ch, #erros {
     display: flex;
     justify-content: center;
-
 }
 
-#txt-tnt {
+#txt-tnt, #txt-er {
     font-size: 40px;
 }
 
