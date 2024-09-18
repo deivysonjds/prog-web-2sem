@@ -114,7 +114,7 @@ function chutar(){
     let countIndex = 0
     let chuteErrado = true
     for (let letra of palavraJogo){
-        if (letra.toLowerCase() == letraChuteInput.textContent.toLowerCase()){
+        if (letra.toLowerCase() == letraChuteInput.value.toLowerCase()){
             let pLetraChute = document.createElement('p')
             pLetraChute.classList.add('ltr-ch-crt')
             pLetraChute.textContent = letraChuteInput.value
