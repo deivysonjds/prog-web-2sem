@@ -84,3 +84,15 @@ header {
 #txt-ltr-ch {
     font-size: 30px;
 }
+
+#tcl-ltr {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-ltr-ch {
+    width: 4rem;
+    height: 2rem;
+    margin: 5px;
+}
