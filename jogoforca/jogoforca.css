@@ -85,7 +85,7 @@ header {
     font-size: 30px;
 }
 
-#tcl-ltr {
+#tcl-ltr, #img-f {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -95,4 +95,8 @@ header {
     width: 4rem;
     height: 2rem;
     margin: 5px;
+}
+
+#img-forca {
+    width: 10rem;
 }

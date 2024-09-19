@@ -46,6 +46,8 @@ function iniciarNovoJogo(){
     divErros.innerHTML = ''
     const divLetrasTentativa = document.getElementById('tcl-ltr')
     divLetrasTentativa.innerHTML = ''
+    const imgForca = document.getElementById('img-f')
+    imgForca.innerHTML = ''
 
     let pLenPalavra = document.createElement('p')
     pLenPalavra.id = 'ltr-tnt'
@@ -113,9 +115,28 @@ function iniciarNovoJogo(){
                 }
                 countIndex++
             }
+
+            const divLetrasTent = document.getElementById('ltr-ch-lst')
+            
+            if (tentativas == 0){
+                let divTextLetraTen = document.createElement('div')
+                let pTextLetraTent = document.createElement('p')
+                pTextLetraTent.id = 'txt-ltr-ch'
+                pTextLetraTent.textContent = 'Letras chutadas: '
+                divTextLetraTen.appendChild(pTextLetraTent)
+                divLetrasTent.appendChild(divTextLetraTen)
+            }
+
+            tentativas++
+            const pTentativas = document.getElementById('txt-tnt')
+            pTentativas.textContent = `Tentativas: ${tentativas}`
         
             if (chuteErrado){
                 erros++
+                const pErro = document.getElementById('txt-er')
+                pErro.textContent = `Erros: ${erros}`
+                let imgErroForca = document.getElementById(`img-forca`)
+                imgErroForca.src = `./img/img${erros+1}.png`
                 if (erros>=6) {
                     alert(`Você perdeu, reinicie o jogo\nA palavra era ${palavraJogo}`)
                     return
@@ -127,16 +148,6 @@ function iniciarNovoJogo(){
                 alert('Você acertou a palavra! Bom trabalho')
             }
         
-            const divLetrasTent = document.getElementById('ltr-ch-lst')
-        
-            if (tentativas == 0){
-                let divTextLetraTen = document.createElement('div')
-                let pTextLetraTent = document.createElement('p')
-                pTextLetraTent.id = 'txt-ltr-ch'
-                pTextLetraTent.textContent = 'Letras chutadas: '
-                divTextLetraTen.appendChild(pTextLetraTent)
-                divLetrasTent.appendChild(divTextLetraTen)
-            }
             
             let divLetraTent = document.createElement('div')
             divLetraTent.classList.add('ltr-ch-div')
@@ -149,13 +160,6 @@ function iniciarNovoJogo(){
             divLetrasTent.appendChild(divLetraTent)
         
             listLetrasChutadas.push(buttonLetra.textContent)
-            tentativas++
-            const pTentativas = document.getElementById('txt-tnt')
-            pTentativas.textContent = `Tentativas: ${tentativas}`
-        
-            const pErro = document.getElementById('txt-er')
-            pErro.textContent = `Erros: ${erros}`
-                
         }
         divLetrasTentativa.appendChild(buttonLetra)
     }
@@ -165,6 +169,12 @@ function iniciarNovoJogo(){
     letrasCertas = 0
     erros = 0
     
+    let img = document.createElement('img')
+    img.src = `./img/img1.png`
+    img.alt = `forca`
+    img.id = `img-forca`
+    imgForca.appendChild(img)
+
     let pTentativas = document.createElement('p')
     pTentativas.id = 'txt-tnt'
     pTentativas.textContent = `Tentativas: ${tentativas}`
@@ -175,105 +185,3 @@ function iniciarNovoJogo(){
     pErros.textContent = `Erros: ${erros}`
     divErros.appendChild(pErros)
 }
-
-// function chutar(){
-//     if (erros >= 5){
-//         alert(`Você perdeu, reinicie o jogo\nA palavra era ${palavraJogo}`)
-//         return;
-//     }
-
-//     const pTentativasCh = document.getElementById('txt-tnt')
-//     const letraChuteInput = document.getElementById('ltr-ch')
-//     const letrasOcultasDiv = document.querySelectorAll('.div-let-sp')
-    
-//     if (!pTentativasCh){
-//         alert('Inicie o jogo antes de tentar um chute.')
-//         letraChuteInput.value = ''
-//         letraChuteInput.focus()
-//         return;
-//     }
-    
-//     if(palavraJogo.length == letrasCertas){
-//         alert('Você já acertou a palavra! Reinicie o Jogo!')
-//         letraChuteInput.value = ''
-//         letraChuteInput.focus()
-//         return;
-//     }
-
-//     if (!letraChuteInput.value){
-//         alert('Informe uma letra!')
-//         letraChuteInput.focus()
-//         return;
-//     }
-
-//     let letraInList = listLetrasChutadas.find((letra)=>{
-//         return letra.toLowerCase() == letraChuteInput.value.toLowerCase()
-//     })
-    
-//     if (letraInList != undefined){
-//         alert('A letra já foi chutada, informe outra.')
-//         letraChuteInput.value = ''
-//         letraChuteInput.focus()
-//         return
-//     }
-
-//     let countIndex = 0
-//     let chuteErrado = true
-//     for (let letra of palavraJogo){
-//         if (letra.toLowerCase() == letraChuteInput.value.toLowerCase()){
-//             let pLetraChute = document.createElement('p')
-//             pLetraChute.classList.add('ltr-ch-crt')
-//             pLetraChute.textContent = letraChuteInput.value
-
-//             letrasOcultasDiv[countIndex].appendChild(pLetraChute)
-//             letrasCertas++
-//             chuteErrado = false
-//         }
-//         countIndex++
-//     }
-
-//     if (chuteErrado){
-//         erros++
-//         if (erros>=5) {
-//             alert(`Você perdeu, reinicie o jogo\nA palavra era ${palavraJogo}`)
-//             return
-//         }
-//     }
-    
-
-//     if(palavraJogo.length == letrasCertas){
-//         alert('Você acertou a palavra! Bom trabalho')
-//     }
-
-//     const divLetrasTent = document.getElementById('ltr-ch-lst')
-
-//     if (tentativas == 0){
-//         let divTextLetraTen = document.createElement('div')
-//         let pTextLetraTent = document.createElement('p')
-//         pTextLetraTent.id = 'txt-ltr-ch'
-//         pTextLetraTent.textContent = 'Letras chutadas: '
-//         divTextLetraTen.appendChild(pTextLetraTent)
-//         divLetrasTent.appendChild(divTextLetraTen)
-//     }
-    
-//     let divLetraTent = document.createElement('div')
-//     divLetraTent.classList.add('ltr-ch-div')
-    
-//     let pLetraTent = document.createElement('p')
-//     pLetraTent.classList.add('ltr-ch-p')
-//     pLetraTent.textContent = letraChuteInput.value
-
-//     divLetraTent.appendChild(pLetraTent)
-//     divLetrasTent.appendChild(divLetraTent)
-
-//     listLetrasChutadas.push(letraChuteInput.value)
-//     tentativas++
-//     const pTentativas = document.getElementById('txt-tnt')
-//     pTentativas.textContent = `Tentativas: ${tentativas}`
-
-//     const pErro = document.getElementById('txt-er')
-//     pErro.textContent = `Erros: ${erros}`
-
-//     letraChuteInput.value = ''
-//     letraChuteInput.focus()
-// }
