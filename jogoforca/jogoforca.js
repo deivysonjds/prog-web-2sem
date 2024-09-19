@@ -36,16 +36,14 @@ function iniciarNovoJogo(){
     let indexPalavra = Math.floor(Math.random() * palavras.length)
     const divLetras = document.getElementById('ltr')
     divLetras.innerHTML = ''
-    const divLenPalavra = document.getElementById('len-plv')
-    divLenPalavra.innerHTML = ''
     const divLetrasTentList = document.getElementById('ltr-ch-lst')
     divLetrasTentList.innerHTML = ''
     const divTentativas = document.getElementById('tnt-ch')
     divTentativas.innerHTML = ''
-    const divErros = document.getElementById('erros')
-    divErros.innerHTML = ''
+    divTentativas.classList.add('trv')
     const divLetrasTentativa = document.getElementById('tcl-ltr')
     divLetrasTentativa.innerHTML = ''
+    divLetrasTentativa.classList.add('trv')
     const imgForca = document.getElementById('img-f')
     imgForca.innerHTML = ''
 
@@ -53,7 +51,6 @@ function iniciarNovoJogo(){
     pLenPalavra.id = 'ltr-tnt'
     pLenPalavra.textContent = `Palavra com ${palavras[indexPalavra].length} letras`
     
-    divLenPalavra.appendChild(pLenPalavra)
     palavraJogo = palavras[indexPalavra]
     
     for (let letra in palavraJogo){
@@ -117,7 +114,7 @@ function iniciarNovoJogo(){
             }
 
             const divLetrasTent = document.getElementById('ltr-ch-lst')
-            
+            divLetrasTent.classList.add('trv')
             if (tentativas == 0){
                 let divTextLetraTen = document.createElement('div')
                 let pTextLetraTent = document.createElement('p')
@@ -130,11 +127,10 @@ function iniciarNovoJogo(){
             tentativas++
             const pTentativas = document.getElementById('txt-tnt')
             pTentativas.textContent = `Tentativas: ${tentativas}`
-        
+            
+            
             if (chuteErrado){
                 erros++
-                const pErro = document.getElementById('txt-er')
-                pErro.textContent = `Erros: ${erros}`
                 let imgErroForca = document.getElementById(`img-forca`)
                 imgErroForca.src = `./img/img${erros+1}.png`
                 if (erros>=6) {
@@ -180,8 +176,8 @@ function iniciarNovoJogo(){
     pTentativas.textContent = `Tentativas: ${tentativas}`
     divTentativas.appendChild(pTentativas)
 
-    let pErros = document.createElement('p')
-    pErros.id = 'txt-er'
-    pErros.textContent = `Erros: ${erros}`
-    divErros.appendChild(pErros)
+    // let teclado = document.getElementById('len-tcl')
+    // teclado.classList.add('trv')
+
+
 }

@@ -36,6 +36,11 @@ header {
     justify-content: center;
 }
 
+.trv {
+    border-top: 1px solid black;
+    margin: 10px 0px 10px 0px;
+}
+
 .div-let-sp {
     display: flex;
     justify-content: center;
@@ -49,11 +54,13 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 20px 0px 20px 0px;
 }
 
-#tnt-ch, #erros {
+#tnt-ch {
     display: flex;
     justify-content: center;
+    max-width: 600px;
 }
 
 #txt-tnt, #txt-er {
@@ -69,6 +76,7 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 600px;
 }
 
 .ltr-ch-div {
@@ -85,12 +93,25 @@ header {
     font-size: 30px;
 }
 
-#tcl-ltr, #img-f {
+
+#img-f {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
+#len-tcl, #flx-tnt-ch, #flx-ch-lst {
+    display: flex;
+    justify-content: center;
+}
+
+#tcl-ltr {
+    display: flex;
+    width: 600px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 0px 20px 0px;
+}
 .btn-ltr-ch {
     width: 4rem;
     height: 2rem;
