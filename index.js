@@ -37,27 +37,28 @@ document.addEventListener('DOMContentLoaded',()=>{
     
     for (const atividade of atividades) {
         
-        let liElement = document.createElement('li')
+        let divElement = document.createElement('div')
+        divElement.classList.add('div-atvs')
         let h2Element = document.createElement('h2')
         let pElement = document.createElement('p')
-        let pLinkElement = document.createElement('p')
         let aElement = document.createElement('a')
+        let button = document.createElement('button')
+        button.classList.add('btn-ver-atv')
+        button.textContent = 'Ver atividade'
 
         h2Element.textContent = atividade.titulo
 
         pElement.textContent = atividade.descricao
 
         aElement.href = atividade.url
-        aElement.textContent = 'Clique aqui'
-        pLinkElement.textContent  = ` para visualizar`
+        aElement.appendChild(button)
 
-        liElement.classList.add(`listas-atividades`)
+        divElement.classList.add(`listas-atividades`)
 
-        liElement.appendChild(h2Element)
-        liElement.appendChild(pElement)
-        liElement.appendChild(aElement)
-        liElement.appendChild(pLinkElement)
+        divElement.appendChild(h2Element)
+        divElement.appendChild(pElement)
+        divElement.appendChild(aElement)
 
-        OlElement.appendChild(liElement)
+        OlElement.appendChild(divElement)
     }
 })

@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+}
+
+header {
+    background-color: black;
+    padding: 20px;
+}
+
+header h1 {
+    color: white;
+}
+
+header p {
+    color: white;
+}
+
+#atvs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.div-atvs {
+    max-width: 250px;
+    margin: 20px;
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn-ver-atv {
+    height: 40px;
+    border-radius: 20px;
+    background-color: darkorchid;
+    color: white;
+}
+
+.btn-ver-atv:hover {
+    background-color: cornflowerblue;
+    cursor: pointer;
+}
