@@ -30,6 +30,11 @@ const atividades = [{
     titulo: "Jogo da forca",
     descricao: "Criar um site que seja um jogo da forca",
     url: "./jogoforca/"
+},
+{
+    titulo: "Apis rest",
+    descricao: "Criar 3 sites que renderizem informações de apis usando fetch",
+    url: "./api-rest/"
 }
 ]
 
