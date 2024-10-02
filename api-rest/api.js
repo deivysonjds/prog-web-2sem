@@ -17,7 +17,7 @@ btnGerar.onclick = async ()=>{
     const response = await fetch(URL, requestOptions)
     let imagesDatas = response.json()
 
-    for (const element of imagesDatas) {
+    for (const element of imagesDatas.Array) {
         console.log(element);
     }
 }
