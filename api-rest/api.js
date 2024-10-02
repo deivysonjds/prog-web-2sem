@@ -15,7 +15,7 @@ const requestOptions = {
 btnGerar.onclick = async ()=>{
     const divContent = document.getElementById('content')
     const response = await fetch(URL, requestOptions)
-    let imagesDatas = response.json()
+    let imagesDatas = response
 
     console.log(imagesDatas);
 }
