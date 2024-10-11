@@ -23,8 +23,7 @@ header p {
 }
 
 .div-atvs {
-    max-width: 250px;
-    min-width: 200px;
+    width: 250px;
     margin: 20px;
     background-color: aqua;
     padding: 10px;
