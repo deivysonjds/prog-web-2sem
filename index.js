@@ -35,6 +35,11 @@ const atividades = [{
     titulo: "Apis rest",
     descricao: "Criar 3 sites que renderizem informações de apis usando fetch",
     url: "./api-rest/"
+},
+{
+    titulo: "Crud de despesas",
+    descricao: "Criar um crud de despesas",
+    url: "./despesas/"
 }
 ]
 
