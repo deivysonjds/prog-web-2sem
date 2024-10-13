@@ -5,15 +5,20 @@ window.onload = ()=>{
 } 
 
 function fetchData(URL){
-    const btnPrev = document.getElementById('prev')
-    const btnNext = document.getElementById('next')
+    const btnPrev = document.getElementsByClassName('prev')
+    const btnNext = document.getElementsByClassName('next')
     const divContentPersons = document.getElementById('content')
     divContentPersons.innerHTML = ''
     fetch(URL).then((response)=>{
         return response.json()
-    }).then((data)=>{        
-        btnNext.disabled = data.info.next == null ? true : false
-        btnPrev.disabled = data.info.prev == null ? true : false
+    }).then((data)=>{
+        for (let btnN of btnNext){
+            btnN.disabled = data.info.next == null ? true : false
+        }
+
+        for (let btnP of btnPrev){
+            btnP.disabled = data.info.prev == null ? true : false
+        }
         
         data.results.map((personagem)=>{
             let divPersonagem = document.createElement('div')
@@ -61,12 +66,17 @@ function fetchData(URL){
             divContentPersons.append(divPersonagem)
         })
         
-        btnNext.onclick = ()=>{
-            fetchData(data.info.next)
+        for (let btnN of btnNext){
+            btnN.onclick = ()=>{
+                fetchData(data.info.next)
+            }
         }
+        
 
-        btnPrev.onclick = ()=>{
-            fetchData(data.info.prev)
+        for (let btnP of btnPrev){
+            btnP.onclick = ()=>{
+                fetchData(data.info.next)
+            }
         }
     })
 }
