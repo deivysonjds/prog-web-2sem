@@ -75,7 +75,7 @@ function fetchData(URL){
 
         for (let btnP of btnPrev){
             btnP.onclick = ()=>{
-                fetchData(data.info.next)
+                fetchData(data.info.prev)
             }
         }
     })

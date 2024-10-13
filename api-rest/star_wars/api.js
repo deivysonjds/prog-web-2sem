@@ -1,7 +1,11 @@
 let BASE_URL = 'https://swapi.dev/api/people/?page=1'
+let URL_PLANETS = 'https://swapi.dev/api/planets'
 
 window.onload = ()=>{
+
+    
     fetchData(BASE_URL)
+    
 } 
 
 async function fetchData(URL){
@@ -12,7 +16,7 @@ async function fetchData(URL){
     fetch(URL).then((response)=>{
         return response.json()
     }).then((data)=>{
-        console.log(data);
+        // console.log(data);
         for (let btnN of btnNext){
             btnN.disabled = data.next == null ? true : false
         }
@@ -20,6 +24,7 @@ async function fetchData(URL){
         for (let btnP of btnPrev){
             btnP.disabled = data.previous == null ? true : false
         }
+        // console.log(data.results);
         
         data.results.map((personagem)=>{
             let divPerson = document.createElement('div')
@@ -59,7 +64,8 @@ async function fetchData(URL){
             divDataPerson.append(pCorCabelos)
             divDataPerson.append(pCorOlhos)
             divDadosPersonGeral.append(divDataPerson)
-            
+
+            // dados do planeta
             let divDataPlanet = document.createElement('div')
             divDataPlanet.classList.add('data-planet')
 
@@ -67,31 +73,33 @@ async function fetchData(URL){
             planetaH3.innerHTML = 'Planeta origem'
             
             divDataPlanet.append(planetaH3)
-            fetch(personagem.homeworld).then((responsePlanet)=>{
-                return responsePlanet.json()
+            
+            fetch(personagem.homeworld).then((response)=>{
+                return response.json()
             }).then((dataPlanet)=>{
-                console.log(dataPlanet);
+
+                
                 let pPlanetName = document.createElement('p')
                 pPlanetName.innerHTML = `Nome: ${dataPlanet.name}`
-
+    
                 let pPlanetDiametro = document.createElement('p')
-                pPlanetDiametro.innerHTML = `Diâmetro: ${dataPlanet.diameter}`
+                pPlanetDiametro.innerHTML = `Diâmetro: ${dataPlanet.diameter} km`
                 
                 let pPlanetPopulacao = document.createElement('p')
                 pPlanetPopulacao.innerHTML = `População: ${dataPlanet.population}`
-
+    
                 let pPlanetPerOrbital = document.createElement('p')
-                pPlanetPerOrbital.innerHTML = `Período orbital: ${dataPlanet.orbital_period}`
-
+                pPlanetPerOrbital.innerHTML = `Período orbital: ${dataPlanet.orbital_period} dias`
+    
                 let pPlanetPerRot = document.createElement('p')
-                pPlanetPerRot.innerHTML = `Período rotacional: ${dataPlanet.rotation_period}`
-
+                pPlanetPerRot.innerHTML = `Período rotacional: ${dataPlanet.rotation_period} h`
+    
                 let pPlanetGravidade = document.createElement('p')
                 pPlanetGravidade.innerHTML = `Gravidade: ${dataPlanet.gravity}`
-
+    
                 let pPlanetClima = document.createElement('p')
                 pPlanetClima.innerHTML = `Clima: ${dataPlanet.climate}`
-
+    
                 divDataPlanet.append(pPlanetName)
                 divDataPlanet.append(pPlanetDiametro)
                 divDataPlanet.append(pPlanetPopulacao)
@@ -99,10 +107,11 @@ async function fetchData(URL){
                 divDataPlanet.append(pPlanetPerRot)
                 divDataPlanet.append(pPlanetGravidade)
                 divDataPlanet.append(pPlanetClima)
+                divDadosPersonGeral.append(divDataPlanet)
             })
+        
             
             
-            divDadosPersonGeral.append(divDataPlanet)
 
             divPerson.append(divName)
             divPerson.append(divDadosPersonGeral)
@@ -111,14 +120,31 @@ async function fetchData(URL){
         
         for (let btnN of btnNext){
             btnN.onclick = ()=>{
-                fetchData(data.next)
+                
+                let planetsNext = []
+                fetch(URL_PLANETS).then((response)=>{
+                    return response.json()
+                }).then((data)=>{
+                    data.results.map((planet)=>{
+                        planetsNext.push(planet)
+                    })
+                })
+                fetchData(data.next, planetsNext)
             }
         }
         
 
         for (let btnP of btnPrev){
             btnP.onclick = ()=>{
-                fetchData(data.previous)
+                let planetsPrev = []
+                fetch(URL_PLANETS).then((response)=>{
+                    return response.json()
+                }).then((data)=>{
+                    data.results.map((planet)=>{
+                        planetsPrev.push(planet)
+                    })
+                })
+                fetchData(data.previous, planetsPrev)
             }
         }
     })
