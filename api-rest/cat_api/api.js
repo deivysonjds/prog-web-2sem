@@ -16,6 +16,12 @@ btnGerar.onclick = ()=>{
     const divContent = document.getElementById('content')
     divContent.innerHTML = ''
     const contentMain = document.getElementById('main-content')
+    try{
+        let divMore = document.getElementById('div-more')
+        divMore.innerHTML = ''
+    } catch {
+
+    }
 
     fetch(URL_BASE, header).then((response)=>{
         return response.json()
