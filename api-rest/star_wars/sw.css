@@ -1,0 +1,66 @@
+body {
+    margin: 0px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+p, .person h3, h2 {
+    color: white;
+}
+
+.pages {
+    padding: 10px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+
+@media (min-width: 575px){
+    .person {
+        background-color: black;
+        border-radius: 15px;
+        width: 500px;
+        margin: 10px;
+    }
+    
+    .content-data {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid white;
+    }
+    
+    .data-planet {
+        border-left: 1px solid white;
+    }
+    
+    .data-person, .data-planet {
+        text-align: left;
+        padding-left: 5px;
+    }
+}
+
+@media (max-width: 574px){
+    .person {
+        background-color: black;
+        border-radius: 15px;
+        width: 300px;
+        margin: 10px;
+    }
+
+    .content-data {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        border-top: 1px solid white;
+    }
+
+    .data-planet {
+        border-top: 1px solid white;
+    }
+}
