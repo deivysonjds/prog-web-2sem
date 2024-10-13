@@ -1,0 +1,61 @@
+body {
+    text-align: center;
+    margin: 0px;
+}
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#content {
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    min-width: 500px;
+    max-width: max-content;
+}
+
+.despesa-title {
+    display: grid;
+    grid-template-columns: 40% 40% ;
+}
+
+.despesa {
+    display: grid;
+    grid-template-columns: 40% 40% 10% 10%;
+    border-top: 1px solid white;
+    padding: 10px;
+}
+
+.icon-delete {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-edit {
+    width: 25px;
+    height: 25px;
+}
+
+.despesa button {
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+}
+
+.despesa button:hover {
+    cursor: pointer;
+}
+
+.addtemp {
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+}
+
+label {
+    margin: 5px;
+}
+
+.btnConf {
+    margin: 10px;
+}
+
