@@ -60,6 +60,7 @@ function fetchData(URL){
             divPersonagem.append(divData)
             divContentPersons.append(divPersonagem)
         })
+        
         btnNext.onclick = ()=>{
             fetchData(data.info.next)
         }
