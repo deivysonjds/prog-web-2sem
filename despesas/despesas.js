@@ -13,8 +13,13 @@ const headersJson = {
 }
 
 window.onload = ()=>{
-    getDespesas()
+    getDespesas(BASE_URL)
+    // createDespesa(BASE_URL, {
+    //     descricao: "teste de poste 1",
+    //     valor: 10
+    // })
 }
+
 btnAdd.onclick = ()=>{
     let addTempPresence = document.getElementsByClassName('addtemp')
     
@@ -30,12 +35,14 @@ btnAdd.onclick = ()=>{
     const labelValor = document.createElement('label')
     labelValor.textContent = 'Valor: '
     const inputValor = document.createElement('input')
+    inputValor.id = 'inpVl'
     inputValor.type = 'number'
     labelValor.append(inputValor)
     
     const labelDescricao = document.createElement('label')
     labelDescricao.textContent = 'Descricao: '
     const inputDescricao = document.createElement('input')
+    inputDescricao.id = 'inpDesc'
     inputDescricao.type = 'text'
     labelDescricao.append(inputDescricao)
 
@@ -44,6 +51,22 @@ btnAdd.onclick = ()=>{
     btnConfirmar.classList.add('btnConf')
     btnConfirmar.innerHTML = 'Confirmar'
     btnConfirmar.onclick = ()=>{
+        const inputDesc = document.getElementById('inpDesc')
+        const inputVl = document.getElementById('inpVl')
+        
+        if(inputDesc.value == '' || inputVl.value == ''){
+            alert('Preencha todos os campos!')
+            divAdd.classList.remove('addtemp')
+            divAdd.innerHTML = '' 
+            return;
+        }
+
+        createDespesa(BASE_URL, {
+            descricao: inputDesc.value,
+            valor: parseFloat(inputVl.value)
+        })
+
+        getDespesas(BASE_URL)
         divAdd.classList.remove('addtemp')
         divAdd.innerHTML = '' 
     }
@@ -56,20 +79,44 @@ btnAdd.onclick = ()=>{
 }
 
 
-async function getDespesas() {
+async function getDespesas(url) {
     try {
-        let response = await fetch(BASE_URL, {
+        let response = await fetch(url, {
             method: 'GET',
             headers: headers
         })
 
         if(!response.ok){
-            alert('Erro ao acessar dados')
+            alert('Erro ao acessar dados! atualize a página')
         }
         let data = await response.json()
         listarDespesas(data.results)
     } catch (error) {
-        alert('Erro ao acessar dados 1')
+        alert('Erro ao acessar dados! atualize a página')
+    }
+}
+
+async function createDespesa(url, data) {
+    try {
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: headersJson,
+            body: JSON.stringify(data)
+        })
+   
+    } catch (error) {
+        alert("Erro ao criar despesa! tente novamente mais tarde")
+    }
+}
+
+async function deleteDespesa(url, idDespesa) {
+    try {
+        let response = await fetch(`${url}/${idDespesa}`, {
+            method: "DELETE",
+            headers: headers
+        })
+    } catch (error) {
+        alert("Erro o deletar despesa! tente novamente.")
     }
 }
 
@@ -77,7 +124,6 @@ function listarDespesas(data){
     const divDespesasLista = document.getElementById('despesas-list')
     divDespesasLista.innerHTML = ''
     data.map((despesa)=>{
-        console.log(despesa);
         let divDespesa = document.createElement('div')
         divDespesa.classList.add('despesa')
 
@@ -107,7 +153,9 @@ function listarDespesas(data){
         buttonDelete.append(imgDelete)
 
         buttonDelete.onclick = ()=>{
-            divDespesa.remove()
+            let idDespesa = despesa.objectId
+            deleteDespesa(BASE_URL, idDespesa)
+            getDespesas(BASE_URL)
         }
         divDelete.append(buttonDelete)
 
