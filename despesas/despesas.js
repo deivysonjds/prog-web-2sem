@@ -14,10 +14,6 @@ const headersJson = {
 
 window.onload = ()=>{
     getDespesas(BASE_URL)
-    // createDespesa(BASE_URL, {
-    //     descricao: "teste de poste 1",
-    //     valor: 10
-    // })
 }
 
 btnAdd.onclick = ()=>{
@@ -62,20 +58,27 @@ btnAdd.onclick = ()=>{
         }
 
         createDespesa(BASE_URL, {
-            descricao: inputDesc.value,
+            descricao: `${inputDesc.value}`.toString(),
             valor: parseFloat(inputVl.value)
         })
 
+        divAdd.classList.remove('addtemp')
+        divAdd.innerHTML = '' 
         getDespesas(BASE_URL)
+    }
+
+    const btnCancelar = document.createElement('button')
+    btnCancelar.innerHTML = 'Cancelar'
+    btnCancelar.onclick = ()=>{
         divAdd.classList.remove('addtemp')
         divAdd.innerHTML = '' 
     }
 
     form.append(labelDescricao)
     form.append(labelValor)
-    form.append(btnConfirmar)
     divAdd.append(form)
     divAdd.append(btnConfirmar)
+    form.append(btnCancelar)
 }
 
 
@@ -103,9 +106,24 @@ async function createDespesa(url, data) {
             headers: headersJson,
             body: JSON.stringify(data)
         })
-   
+        await response.json()
+        
     } catch (error) {
         alert("Erro ao criar despesa! tente novamente mais tarde")
+    }
+}
+
+async function updateDdespesa(url, data, idDespesa) {
+    try {
+        let response = await fetch(`${url}/${idDespesa}`, {
+            method: 'PUT',
+            headers: headersJson,
+            body: JSON.stringify(data)
+        })
+        await response.json()
+        
+    } catch (error) {
+        alert("Erro ao atualizar despesa! tente novamente mais tarde")
     }
 }
 
@@ -115,6 +133,8 @@ async function deleteDespesa(url, idDespesa) {
             method: "DELETE",
             headers: headers
         })
+        await response.json()
+         
     } catch (error) {
         alert("Erro o deletar despesa! tente novamente.")
     }
@@ -123,7 +143,11 @@ async function deleteDespesa(url, idDespesa) {
 function listarDespesas(data){
     const divDespesasLista = document.getElementById('despesas-list')
     divDespesasLista.innerHTML = ''
+    let total = document.getElementById('total')
+    total.innerHTML = ''
+    let soma = 0
     data.map((despesa)=>{
+        soma += parseFloat(despesa.valor)
         let divDespesa = document.createElement('div')
         divDespesa.classList.add('despesa')
 
@@ -134,7 +158,7 @@ function listarDespesas(data){
 
         let divVlr = document.createElement('div')
         let pVlr = document.createElement('p')
-        pVlr.textContent = `${parseFloat(despesa.valor)}`
+        pVlr.textContent = `${despesa.valor}`
         divVlr.append(pVlr)
 
         let divEdit = document.createElement('div')
@@ -143,7 +167,26 @@ function listarDespesas(data){
         imgEdit.src = './img/edit.png'
         imgEdit.classList.add('icon-edit')
         buttonEdit.append(imgEdit)
+        buttonEdit.onclick = ()=>{
+            pDesc.remove()
+            let inputNewDesc = document.createElement('input')
+            inputNewDesc.type = 'text'
+
+            let buttonAtualizar = document.createElement('button')
+            buttonAtualizar.innerHTML = 'Atualizar'
+
+            buttonAtualizar.onclick = ()=>{
+                updateDdespesa(BASE_URL, {
+                    descricao: inputNewDesc.value
+                },despesa.objectId)
+
+                getDespesas(BASE_URL)
+            }
+            divDesc.append(buttonAtualizar)
+            divDesc.append(inputNewDesc)
+        }
         divEdit.append(buttonEdit)
+        
 
         let divDelete = document.createElement('div')
         let buttonDelete = document.createElement('button')
@@ -164,6 +207,6 @@ function listarDespesas(data){
         divDespesa.append(divEdit)
         divDespesa.append(divDelete)
         divDespesasLista.append(divDespesa)
-
     })
+    total.innerHTML = `Total: R$ ${soma}`
 }
