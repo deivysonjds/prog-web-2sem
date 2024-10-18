@@ -158,7 +158,7 @@ function listarDespesas(data){
 
         let divVlr = document.createElement('div')
         let pVlr = document.createElement('p')
-        pVlr.textContent = `${despesa.valor}`
+        pVlr.textContent = `${despesa.valor.toFixed(2).replace('.',',')}`
         divVlr.append(pVlr)
 
         let divEdit = document.createElement('div')
@@ -208,5 +208,6 @@ function listarDespesas(data){
         divDespesa.append(divDelete)
         divDespesasLista.append(divDespesa)
     })
-    total.innerHTML = `Total: R$ ${soma}`
+    total.innerHTML = `Total: R$ ${soma.toFixed(2).replace('.',',')}`
 }
+
