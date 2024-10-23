@@ -43,7 +43,6 @@ btnAdd.onclick = ()=>{
     labelDescricao.append(inputDescricao)
 
     const btnConfirmar = document.createElement('button')
-    btnConfirmar.type = 'submit'
     btnConfirmar.classList.add('btnConf')
     btnConfirmar.innerHTML = 'Confirmar'
     btnConfirmar.onclick = ()=>{
@@ -64,7 +63,6 @@ btnAdd.onclick = ()=>{
 
         divAdd.classList.remove('addtemp')
         divAdd.innerHTML = '' 
-        getDespesas(BASE_URL)
     }
 
     const btnCancelar = document.createElement('button')
@@ -90,7 +88,7 @@ async function getDespesas(url) {
         })
 
         if(!response.ok){
-            alert('Erro ao acessar dados! atualize a página')
+            throw new Error("Erro na requisição");
         }
         let data = await response.json()
         listarDespesas(data.results)
@@ -106,7 +104,10 @@ async function createDespesa(url, data) {
             headers: headersJson,
             body: JSON.stringify(data)
         })
-        await response.json()
+        if(!response.ok){
+            throw new Error("Erro na requisição");      
+        }
+        getDespesas(url)
         
     } catch (error) {
         alert("Erro ao criar despesa! tente novamente mais tarde")
@@ -120,8 +121,12 @@ async function updateDdespesa(url, data, idDespesa) {
             headers: headersJson,
             body: JSON.stringify(data)
         })
-        await response.json()
         
+        if(!response.ok){
+            throw new Error("Erro na requisição");
+        }
+        getDespesas(url)
+
     } catch (error) {
         alert("Erro ao atualizar despesa! tente novamente mais tarde")
     }
@@ -133,8 +138,12 @@ async function deleteDespesa(url, idDespesa) {
             method: "DELETE",
             headers: headers
         })
-        await response.json()
-         
+
+        if(!response.ok){
+            throw new Error("Erro na requisição")
+        }
+
+        getDespesas(url)
     } catch (error) {
         alert("Erro o deletar despesa! tente novamente.")
     }
@@ -168,22 +177,46 @@ function listarDespesas(data){
         imgEdit.classList.add('icon-edit')
         buttonEdit.append(imgEdit)
         buttonEdit.onclick = ()=>{
-            pDesc.remove()
+            try {
+                let attExist = document.getElementsByClassName('btnCancatt')
+                if(attExist.length > 0){
+                    return
+                }
+            } catch (error) {
+                console.error(error);
+                
+            }
+            // pDesc.remove()
+            let divAtt = document.createElement('div')
+            divAtt.classList.add('divAtt')
             let inputNewDesc = document.createElement('input')
             inputNewDesc.type = 'text'
-
+            inputNewDesc.placeholder = "Nova descrição"
+            
+            let divBtnAtt = document.createElement('div')
             let buttonAtualizar = document.createElement('button')
+            buttonAtualizar.classList.add('btnatt')
             buttonAtualizar.innerHTML = 'Atualizar'
 
             buttonAtualizar.onclick = ()=>{
                 updateDdespesa(BASE_URL, {
                     descricao: inputNewDesc.value
                 },despesa.objectId)
-
-                getDespesas(BASE_URL)
             }
-            divDesc.append(buttonAtualizar)
-            divDesc.append(inputNewDesc)
+
+            let buttonCancelarAtualizacao = document.createElement('button')
+            buttonCancelarAtualizacao.classList.add('btnCancatt')
+            buttonCancelarAtualizacao.innerHTML = 'Cancelar'
+
+            buttonCancelarAtualizacao.onclick = ()=>{
+                divAtt.remove()
+            }
+            divBtnAtt.append(buttonAtualizar)
+            divBtnAtt.append(buttonCancelarAtualizacao)
+
+            divAtt.append(inputNewDesc)
+            divAtt.append(divBtnAtt)
+            divDesc.append(divAtt)
         }
         divEdit.append(buttonEdit)
         
@@ -198,7 +231,6 @@ function listarDespesas(data){
         buttonDelete.onclick = ()=>{
             let idDespesa = despesa.objectId
             deleteDespesa(BASE_URL, idDespesa)
-            getDespesas(BASE_URL)
         }
         divDelete.append(buttonDelete)
 
