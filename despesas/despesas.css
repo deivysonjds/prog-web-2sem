@@ -59,3 +59,14 @@ label {
     margin: 10px;
 }
 
+.btnatt, .btnCancatt {
+    margin: 5px;
+    min-width: max-content;
+}
+
+.divAtt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
