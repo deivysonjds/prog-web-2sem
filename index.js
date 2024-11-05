@@ -74,10 +74,18 @@ document.addEventListener('DOMContentLoaded',()=>{
         aElement.appendChild(button)
 
         divElement.classList.add(`listas-atividades`)
+        let divh2 = document.createElement('div')
+        let divp = document.createElement('div')
+        let diva = document.createElement('div')
 
-        divElement.appendChild(h2Element)
-        divElement.appendChild(pElement)
-        divElement.appendChild(aElement)
+        divh2.append(h2Element)
+        divElement.appendChild(divh2)
+
+        divp.append(pElement)
+        divElement.appendChild(divp)
+
+        diva.append(aElement) 
+        divElement.appendChild(diva)
 
         OlElement.appendChild(divElement)
     }
