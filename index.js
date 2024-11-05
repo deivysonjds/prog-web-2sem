@@ -45,6 +45,11 @@ const atividades = [{
     titulo: "Formulário",
     descricao: "Desenvolver um formulário",
     url: "./formulario/"
+},
+{
+    titulo: "crud de despesas com login",
+    descricao: "melhorar o código de login",
+    url: "./ex08/"
 }
 ]
 

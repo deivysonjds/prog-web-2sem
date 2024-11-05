@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    margin: 0px;
 }
 
 header {
@@ -23,6 +24,8 @@ header p {
 }
 
 .div-atvs {
+    display: grid;
+    grid-template-rows: .5fr 1fr .5fr;
     width: 250px;
     margin: 20px;
     background-color: aqua;
