@@ -50,6 +50,11 @@ const atividades = [{
     titulo: "crud de despesas com login",
     descricao: "melhorar o código de login",
     url: "./ex08/"
+},
+{
+    titulo: "Bois e vacas",
+    descricao: "Criar um jogo d acertar a senha",
+    url: "./Bulls_and_Cows/"
 }
 ]
 
