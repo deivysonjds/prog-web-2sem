@@ -1,0 +1,66 @@
+body {
+    text-align: center;
+}
+
+header {
+    display: grid;
+    grid-template-rows: 1fr 3ffr;
+}
+
+header img {
+    height: 30px;
+    transition: all 0.2s ease;
+}
+
+header img:hover {
+    height: 35px;
+    cursor: pointer;
+}
+
+header div {
+    margin: 10px;
+}
+
+.border {
+    border: 1px solid black;
+    transition: all 0.2s ease;
+}
+
+#num-ten:hover {
+    background-color: aquamarine;
+    transition: all 0.2s ease;
+}
+
+#ten:hover {
+    background-color: aquamarine;
+    transition: all 0.2s ease;
+}
+
+#resp:hover {
+    background-color: aquamarine;
+    transition: all 0.2s ease;
+}
+
+#table-names {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+}
+
+#table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#n-game {
+    margin: 5px;
+}
+
+.item {
+    border: 1px solid black;
+    transition: all 0.2s ease;
+}
+
+.item:hover {
+    background-color: aquamarine;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <title>Bulls and Cows</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="https://en.wikipedia.org/wiki/Bulls_and_Cows" target="_blank">
+                <img src="./img/icons8-help-48.png" alt="">
+            </a>
+        </div>
+        <div>
+            <h1>Bois e vacas</h1>
+        </div>
+    </header>
+    <main>
+        <div>
+            <button id="n-game" onclick="novoJogo()">Novo jogo</button>
+        </div>
+        <div>
+            <label for="tent"></label>
+            <input id="tent" type="text" maxlength="4">
+            <button id="btn-ch" onclick="chutar()">chutar</button>
+        </div>
+        <div id="table-names">
+            <div>
+                <div class="border">
+                    <p>N° tentativa</p>
+                </div>
+            </div>
+            <div>
+                <div class="border">
+                    <p>Tentativa</p>
+                </div>
+            </div>
+            <div>
+                <div class="border">
+                    <p>Resposta</p>
+                </div>
+            </div>
+        </div>
+        <div id="table">
+            <div id="num-ten"></div>
+            <div id="ten"></div>
+            <div id="resp"></div>
+        </div>
+    </main>
+</body>
+</html>
