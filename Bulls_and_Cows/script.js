@@ -140,3 +140,44 @@ function listarTentatvas(tentativas){
     }
     
 }
+
+function comoJogar(){
+    const help = document.getElementById('help')
+    
+    let divHelp = document.createElement('div')
+    divHelp.classList.add('desc-jogo')
+
+    let br = document.createElement('br')
+    
+    let h2Help = document.createElement('h2')
+    h2Help.textContent = "Como jogar?"
+
+    let pHelp = document.createElement('p')
+    pHelp.textContent = "O jogo Bois e Vacas consiste em você adivinhar qual a senha" +
+                    "gerada pelo sistema a partir de seu raciocínio lógico. \n\n" +
+                    
+                    "Dê um chute e analíse a resposta de seu chute.\n\n" +
+
+                    "- 'B' significa que você acertou um número na posição correta \n" +
+                    "Exemplo: Se a senha gerada for '1234' e você chutar '0256', terá como resposta " +
+                    "'1B0V', pois acertou um número e na posição exata ( Nesse caso o número 2 ).\n\n" +
+
+                    "- 'V' siginifica que você acertou algum número, mas na posição errada. \n" +
+                    "Exemplo: Se a senha gerada for '1234' e você chutar '2056', terá como resposta " +
+                    "'0B1V', pois acertou um número, mas na posição errada ( Nesse caso o número 2 ).\n\n" +
+
+                    "Obs: Você só pode inserir valores únicos. \n" +
+                    "Bom jogo!"
+
+    let btnEntendi = document.createElement('button')
+    btnEntendi.innerHTML = "Entendi"
+    btnEntendi.onclick = ()=>{
+        divHelp.remove()
+    }
+
+    divHelp.append(h2Help)
+    divHelp.append(pHelp)
+    divHelp.append(btnEntendi)
+
+    help.append(divHelp)
+}

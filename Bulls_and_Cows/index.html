@@ -9,45 +9,70 @@
 </head>
 <body>
     <header>
-        <div>
-            <a href="https://en.wikipedia.org/wiki/Bulls_and_Cows" target="_blank">
-                <img src="./img/icons8-help-48.png" alt="">
-            </a>
+        <div id="help">
+            <div>
+                <img src="./img/icons8-help-48.png" alt="comojogar" onclick="comoJogar()">
+            </div>
+            <!-- <div class="desc-jogo">
+                <h2>
+                    Como Jogar? 
+                </h2>
+                <p >O jogo Bois e Vacas consiste em você adivinhar qual a senha
+                    gerada pelo sistema a partir de seu raciocínio lógico. <br><br>
+                    
+                    Dê um chute e analíse a resposta de seu chute.<br><br>
+
+                    - "B" significa que você acertou um número na posição correta <br>
+                    Exemplo: Se a senha gerada for "1234" e você chutar "0256", terá como resposta
+                    "1B0V", pois acertou um número e na posição exata ( Nesse caso o número 2 ).<br><br>
+
+                    - "V" siginifica que você acertou algum número, mas na posição errada. <br>
+                    Exemplo: Se a senha gerada for "1234" e você chutar "2056", terá como resposta
+                    "0B1V", pois acertou um número, mas na posição errada ( Nesse caso o número 2 ).<br><br>
+
+                    Obs: Você só pode inserir valores únicos. <br>
+                    Bom jogo!
+
+                </p>
+                <button>Entendi</button>
+            </div> -->
         </div>
         <div>
             <h1>Bois e vacas</h1>
         </div>
     </header>
     <main>
-        <div>
-            <button id="n-game" onclick="novoJogo()">Novo jogo</button>
-        </div>
-        <div>
-            <label for="tent"></label>
-            <input id="tent" type="text" maxlength="4">
-            <button id="btn-ch" onclick="chutar()">chutar</button>
-        </div>
-        <div id="table-names">
+        <div id="play">
             <div>
-                <div class="border">
-                    <p>N° tentativa</p>
-                </div>
+                <button id="n-game" onclick="novoJogo()">Novo jogo</button>
             </div>
             <div>
-                <div class="border">
-                    <p>Tentativa</p>
+                <label for="tent"></label>
+                <input id="tent" type="text" maxlength="4">
+                <button id="btn-ch" onclick="chutar()">chutar</button>
+            </div>
+            <div id="table-names">
+                <div>
+                    <div class="title">
+                        <p>N° tentativa</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="title">
+                        <p>Tentativa</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="title">
+                        <p>Resposta</p>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div class="border">
-                    <p>Resposta</p>
-                </div>
+            <div id="table">
+                <div id="num-ten"></div>
+                <div id="ten"></div>
+                <div id="resp"></div>
             </div>
-        </div>
-        <div id="table">
-            <div id="num-ten"></div>
-            <div id="ten"></div>
-            <div id="resp"></div>
         </div>
     </main>
 </body>
