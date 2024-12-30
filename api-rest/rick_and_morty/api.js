@@ -13,8 +13,7 @@ function fetchData(URL){
         
         return response.json()
     }).then((data)=>{
-        console.log(data);
-
+        
         for (let btnN of btnNext){
             btnN.disabled = data.info.next == null ? true : false
         }
