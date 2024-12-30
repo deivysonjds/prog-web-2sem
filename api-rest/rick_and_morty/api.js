@@ -10,10 +10,11 @@ function fetchData(URL){
     const divContentPersons = document.getElementById('content')
     divContentPersons.innerHTML = ''
     fetch(URL).then((response)=>{
-        console.log(response);
         
         return response.json()
     }).then((data)=>{
+        console.log(data);
+
         for (let btnN of btnNext){
             btnN.disabled = data.info.next == null ? true : false
         }
@@ -23,6 +24,7 @@ function fetchData(URL){
         }
         
         data.results.map((personagem)=>{
+            
             let divPersonagem = document.createElement('div')
             divPersonagem.classList.add('character')
 
