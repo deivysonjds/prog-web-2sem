@@ -10,6 +10,8 @@ function fetchData(URL){
     const divContentPersons = document.getElementById('content')
     divContentPersons.innerHTML = ''
     fetch(URL).then((response)=>{
+        console.log(response);
+        
         return response.json()
     }).then((data)=>{
         for (let btnN of btnNext){
