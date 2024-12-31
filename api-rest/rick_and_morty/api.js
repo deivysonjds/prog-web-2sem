@@ -1,8 +1,27 @@
 let URL_BASE = 'https://rickandmortyapi.com/api/character/?page=1'
 
-window.onload = ()=>{
+window.onload = async ()=>{
+    let teste = await teste2(URL_BASE)
+    console.log(teste);
+    
     fetchData(URL_BASE)
-} 
+}
+
+async function testFetch(URL_BASE){
+
+    let response = await fetch(URL_BASE)
+
+    let data = await response.json()
+
+    return data
+}
+
+
+
+async function teste2(url) {
+    let data = await testFetch(url)
+    console.log(data);
+}
 
 function fetchData(URL){
     const btnPrev = document.getElementsByClassName('prev')
