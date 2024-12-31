@@ -22,7 +22,7 @@ async function testFetch(URL_BASE){
 
 async function teste2(url) {
     let data = await testFetch(url)
-    console.log(data);
+    return data
 }
 
 function fetchData(URL){
